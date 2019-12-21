@@ -1,0 +1,4 @@
+#PBS -q batch
+#PBS -l nodes=2:ppn=12
+
+python /home/RenderFarm/shenwei/renderingUnit.py 192.168.1.100

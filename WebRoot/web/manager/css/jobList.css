@@ -1,0 +1,24 @@
+/*popup*/
+.popup-box{display:none; background:#eee; position:relative;}
+.popup-close{background:url(../images/popup-close-btn.png) 0 0 no-repeat; display:block; position:absolute; top:-16px; right:-16px; width:32px; height:32px; text-indent:-9999em; cursor:pointer;}
+a.popup-btn{background:#2d7dce; padding:6px 18px; color:#fff; border:none; cursor:pointer; -moz-box-shadow:1px 1px 2px #bbb; -webkit-box-shadow:1px 1px 2px #bbb; box-shadow:1px 1px 2px #bbb;
+*filter: progid:DXImageTransform.Microsoft.Glow(color=#eeeeee ,strength=1) progid:DXImageTransform.Microsoft.Shadow(color=#bbbbbb,direction=135,strength=2); }
+.popup-btn:hover{background:#388bdf;}
+
+.begin-success{width:500px; padding:100px 20px; color:#666; text-align:center;}
+.begin-success .tips-t{margin: 0 0 20px; font-size:16px;}
+
+.begin-success .tips-btn{margin:40px;}
+
+.icon-tips-success{ background:url(../images/icon-tips-20px.png) 0 0 no-repeat; display:inline-block; width:20px; height:20px;}
+
+img.disabled{
+	filter: grayscale(100%);
+  	-webkit-filter: grayscale(100%);
+  	-moz-filter: grayscale(100%);
+  	-ms-filter: grayscale(100%);
+  	-o-filter: grayscale(100%);
+  	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  	filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+  	-webkit-filter: grayscale(1);
+}

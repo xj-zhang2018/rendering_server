@@ -1,0 +1,98 @@
+.module {
+border: 1px solid #9BA0AF;
+width: 100%;
+margin: 0px 0 0 0;
+margin-top: 10px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+background: #ffffff;
+}
+
+.width_quarter {
+width: 100%;
+margin-right: 0;
+float: left;
+}
+
+article{
+display: block;
+}
+
+.module header {
+height: 38px;
+width: 100%;
+background: #F1F1F4 url(../images/secondary_bar.png) repeat-x;
+-webkit-border-top-left-radius: 5px;
+-webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright: 5px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+}
+
+.message_list {
+width:100%;
+height: 300px;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+
+.module_content {
+margin: 10px 20px;
+color: #666;
+}
+
+.message {
+border-bottom: 1px dotted #cccccc;
+}
+
+.module footer {
+height: 32px;
+width: 100%;
+border-top: 1px solid #9CA1B0;
+background: #F1F1F4 url(../images/module_footer_bg.png) repeat-x;
+-webkit-border-bottom-left-radius: 5px;
+-webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+-moz-border-radius-bottomright: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-webkit-border-bottom-right-radius: 5px;
+}
+
+.post_message {
+text-align: left;
+padding: 5px 0;
+}
+
+.post_message input[type=text] {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+border: 1px solid #bbb;
+height: 20px;
+width: 70%;
+color: #ccc;
+-webkit-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+-moz-box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+box-shadow: inset 0 2px 2px #ccc, 0 1px 0 #fff;
+text-indent: 10px;
+background-position: 10px 6px;
+float: left;
+margin: 0 3.5%;
+}
+
+input[type=submit].btn_post_message {
+background: #D0D1D4 url(../images/post_message.png) no-repeat;
+display: block;
+width: 37px;
+border: none;
+height: 24px;
+cursor: pointer;
+text-indent: -5000px;
+}
+
+.bottom-btn a {padding:0.75em 2em; display:block; background:#2d7dce; color:#fff; float:left; margin:1em 0 0 0;}
+.bottom-btn a:hover {background:#388bdf; text-decoration:none;}
+.bottom-btn.bottom-btn-green a{background:#51B821;}
+.bottom-btn.bottom-btn-green a:hover{background:#59cb21;}

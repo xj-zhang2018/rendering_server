@@ -1,0 +1,75 @@
+/* @override http://www.newspond.com/errors/error.css */
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html{height:100%}
+
+#content2 {
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	width: 100%;
+	margin-top: -415px;
+	text-align: center;
+	min-width: 830px; 
+}
+
+body {
+	background: #000 no-repeat 50% 50%;
+}
+
+
+/* @end */
+
+/* @group 404 */
+
+body#e404 {
+	background-image: url(../img/yellowring.jpg);
+}
+
+h1.e404 {
+	color: #ffb304;
+	letter-spacing: -1px;
+	font: bold 31px Helvetica, Arial, Geneva, sans-serif;
+	display: block;
+	text-align: center;
+	position: relative;
+	top: 385px;
+}
+
+
+/* @end */
+
+#wrapper {
+	position: relative;
+	text-align: left;
+	height: 830px;
+	margin: 0px auto;
+	width: 830px;
+}
+
+h2 {
+	color: #6b7078;
+	letter-spacing: -1px;
+	font: 23px Helvetica, Arial, Geneva, sans-serif;
+	display: block;
+	text-align: center;
+	position: relative;
+	top: 394px;
+}
+
+
+
+/* @end */
+
+a.gohome {
+	width: 205px;
+	height: 283px;
+	display: block;
+	position: relative;
+	left: 315px;
+	text-indent: -9999px;
+}

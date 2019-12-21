@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://cxf.apache.org/jaxws 
+	http://cxf.apache.org/schemas/jaxws.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
+	default-lazy-init="true">
+	<context:annotation-config />
+	<context:component-scan base-package="org.xjtu.framework.modules" />
+	
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	
+	<context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true"/>
+	<context:property-placeholder location="classpath:system_config.properties" ignore-unresolvable="true"/>
+	
+	<!-- 加载数据库配置文件 -->
+	<bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClass}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	
+	
+	<!-- 将持久层放入二级缓存 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource"></property>
+		<property name="annotatedClasses">
+			<list>
+				<value>org.xjtu.framework.core.base.model.User</value>
+				<value>org.xjtu.framework.core.base.model.Project</value>
+				<value>org.xjtu.framework.core.base.model.Job</value>
+				<value>org.xjtu.framework.core.base.model.Unit</value>
+				<value>org.xjtu.framework.core.base.model.Task</value>
+				<value>org.xjtu.framework.core.base.model.Frame</value>
+				<value>org.xjtu.framework.core.base.model.EmailLink</value>
+				<value>org.xjtu.framework.core.base.model.Message</value>
+				<value>org.xjtu.framework.core.base.model.RenderEngine</value>
+				<value>org.xjtu.framework.core.base.model.Configuration</value>
+				<value>org.xjtu.framework.core.base.model.Calculate</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>-->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<!-- 事务管理 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	
+	<!-- 配置事务的传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="batchUpdate" propagation="REQUIRED" />
+			<tx:method name="*" read-only="false" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务的切入点 -->
+	<aop:config>
+		<aop:pointcut id="targetMethod" expression="execution(* org.xjtu.framework.modules..service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="targetMethod" />
+	</aop:config>
+	
+    <bean id="systemConfig" class="org.xjtu.framework.core.base.constant.SystemConfig">      <!--在action类声明ftpService对象,并添加set方法,这里注入ftpService  -->
+          <property name="jobManageService" value="${jobManageService}" />           
+ 	</bean>
+	
+    <bean id="jobDistribute" class="org.xjtu.framework.backstage.distribute.JobDistribute"></bean>
+    
+     <bean id="calculateDistribute" class="org.xjtu.framework.backstage.distribute.CalculateDistribute"></bean>
+	
+	<bean id="serviceBean" class="org.xjtu.framework.modules.user.webservice.impl.RenderUserServiceImpl"></bean>
+		
+	<bean id="inMessageInterceptor" class="org.xjtu.framework.modules.user.webservice.MessageInterceptor">
+		<constructor-arg value="receive" />
+	</bean> 
+	<bean id="outLoggingInterceptor" class="org.apache.cxf.interceptor.LoggingOutInterceptor" />
+
+	<jaxws:server id="RenderService" serviceClass="org.xjtu.framework.modules.user.webservice.RenderUserService" address="/render">
+		<jaxws:serviceBean>
+			<ref bean="serviceBean"/>
+		</jaxws:serviceBean>
+		<jaxws:inInterceptors> 
+			<ref bean="inMessageInterceptor" /> 
+		</jaxws:inInterceptors>
+		<jaxws:outInterceptors>
+			<ref bean="outLoggingInterceptor" />
+		</jaxws:outInterceptors>
+	</jaxws:server>
+</beans>

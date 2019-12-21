@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"  import="com.xj.framework.core.Ftp.Frame_Main,org.xjtu.framework.core.base.constant.SystemConfig,
+	org.xjtu.framework.core.base.model.User" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath();
+	String ftpPath = "ftp://"+ request.getServerName() + ":21";
+	
+	    SystemConfig systemConfig=new SystemConfig();
+		String username=systemConfig.getSystemUserName();
+		String password=systemConfig.getSystemPasswd();
+	    String ftpIP=request.getServerName();
+    
+	    
+	   // <s:property value='existedUser.homeDir' />
+    //String workingDirectory="/home/export/online1/systest/swsdu/xijiao/mitsuba-c/user1";
+   User existedUser=(User)request.getAttribute("existedUser");
+    String workingDirectory=existedUser.getHomeDir();
+    //boolean flag=Files.exists(Paths.get(workingDirectory));
+    //if(!flag)Files.createDirectories(Paths.get(workingDirectory));
+	//Frame_Main.Door(ftpIP,username,password,"/root");
+	//Frame_Main.Door("192.168.50.6","root","bing1314","/root");
+	Frame_Main.Door("41.0.0.188","swsdu","123456","/home");
+	
+%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>集群渲染管理平台</title>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/clockp.js"></script>
+<script type="text/javascript" src="js/clockh.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+</head>
+<body> 
+
+<div id="main_container">
+		
+		<%@ include file="inc/header.jsp"%>
+
+		<div class="main_content">
+
+			<%@ include file="inc/menu.jsp"%>
+
+			<div class="center_content">
+				<div class="right_content">
+					<table width="640" cellpadding="7" cellspacing="0" border="0">
+					    <tr>
+					        <td colspan="2" align="center"><font face="arial" size="+1" color="red">
+					        	<b><u>场景文件上传应用</u></b>
+					        	</font>
+					        </td>
+					    </tr>
+					    <tr height="20"></tr>
+					    
+					    
+					    <tr>
+					        <td colspan="2" bgcolor="#3F7C98">
+					        <center><font color="#FFFFFF">Ftp场景文件上传 </font></center>
+					        </td>
+					    </tr>
+					   
+					   
+					 
+					    
+					    
+					    
+					</table>
+
+				</div>
+				<!-- end of right content-->
+
+			</div>
+			<!--end of center content -->
+			<div class="clear"></div>
+		</div>
+		<!--end of main content-->
+
+		<%@ include file="inc/footer.jsp"%>
+</div>
+</body>
+</html>

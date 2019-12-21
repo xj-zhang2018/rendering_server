@@ -73,27 +73,38 @@ public class CalculateDistribute {
 //					shenweiPbsCommand="-q "+fuWuListName+" -o /home/export/online1/systest/swsdu/xijiao/Outprint/"+calculate.getId()+".out"+ " -b -share_size 7168 -n 64 -host_stack 256 "+ renderInstruct;
 
 					//Wang Xiong 2019.11.21 test :new version Instruct
-					shenweiPbsCommand="-b -l -q "+fuWuListName+" -n 216 -cgsp 64 -host_stack 256 -share_size 4096 "+renderInstruct;
+					shenweiPbsCommand="-b -I -q "+fuWuListName+" -n 216 -cgsp 64 -host_stack 2048 -share_size 4096 "+renderInstruct;
 
-					//       	bsub -b -I -q q_sw_sdu -n 1000 -host_stack 512 -share_size 7000 ./sw5.hybrid
-					//shenweiPbsCommand="-q "+fuWuListName+" -o /home/export/online1/systest/swsdu/xijiao/Outprint/"+calculate.getId()+".out"+" -b -I -share_size 7000 -n 1000 -host_stack 512 "+ renderInstruct;
 
+					log.info("已经设置解析任务状态");
 					PbsExecute  pbs=new PbsExecute(Cmd+" && bsub "+shenweiPbsCommand);
-
+					log.info("已经运行完PbsExecute");
 					System.out.println("bsu comand is"+" bsub "+shenweiPbsCommand);
 
 					//PbsExecute  pbs=new PbsExecute("bsub "+shenweiPbsCommand);
 					     stdout=pbs.executeCmd().trim();
-					     log.info("return stdout is "+stdout);
-					     if(stdout!=null&&stdout.length()>0)
-					    	 stdout=stdout.substring(stdout.indexOf('<')+1,stdout.indexOf('>'));
-				          }
-				
+					log.info("当前的运行指令是： stdout=pbs.executeCmd().trim();");
+					     log.info(" stdout的内容是 "+stdout);
+					     if(stdout!=null&&stdout.length()>0){
+							 log.info("即将运行指令是：stdout=stdout.substring(stdout.indexOf('<')+1,stdout.indexOf('>')");
+//							 stdout=stdout.substring(stdout.indexOf('<')+1,stdout.indexOf('>'));
+							 log.info("stdout的长度="+stdout.length());
+							 log.info("已经运行完上一条指令！");
+						 }
+				}
 				log.info("Initializing Rendering Unit..."+stdout);
 
 				calculate.setXmlStatus(CalculateStatus.distributed);
+
 				calculateDao.updateCalculate(calculate);
+
 			    log.info("distibute is finish=====================>");
 			    return true;
-		}	
+		}
+
 }
+//
+//
+// 19:12:01
+//19:13:29
+//19:13:30,

@@ -1,0 +1,9 @@
+#!/bin/bash 
+
+tmp=`mktemp`
+for i in `find $1 -name "*.rib"`
+do 
+    dirname $i >> $tmp
+done
+cat $tmp | sort | uniq
+rm -rf $tmp

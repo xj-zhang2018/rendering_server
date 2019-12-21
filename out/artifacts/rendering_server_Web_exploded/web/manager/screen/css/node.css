@@ -1,0 +1,299 @@
+html, body
+{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Microsoft YaHei","΢���ź�",Helvetica,"����",Arial,Tahoma;
+    color: rgb(34, 34, 34);
+    font-size: 10px;
+}
+
+.outer
+{
+    width: 100%;
+    height: 100%;
+    background: url("../img/bg.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.content
+{
+    width: 95%;
+    height: 87%;
+    margin: auto;
+}
+
+.contentMarginTop
+{
+    width: 100%;
+    height: 6%;
+}
+
+.contentMarginBottom
+{
+    width: 100%;
+    height: 7%;
+}
+
+.right
+{
+    height: 100%;
+    width: 99%;
+    float: left;
+}
+
+.grave
+{
+    height: 100%;
+    width: 3%;
+    float: left;
+}
+
+.left
+{
+    height: 100%;
+    width: 32.2%;
+    float: left;
+}
+
+.tableTop
+{
+/*     width: 100%; */
+/*     height: 10.5%; */
+    background: #00aace;
+}
+
+.table
+{
+    width: 100%;
+    height: 84.3%;
+    background: #fbfbfb;
+    overflow:hidden;
+}
+
+    .table > ul
+    {
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        list-style-type: none;
+        display: block;
+        position: relative;
+        overflow:hidden;
+    }
+
+        .table > ul > li
+        {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            list-style-type: none;
+            display: block;
+            position:absolute;
+            top:0px;
+            left:0px;
+            background:#FFF;
+        }
+            .table > ul > li > img
+            {
+                width: 100%;
+                height: 100%;
+            }
+
+.tableBottom
+{
+    width: 100%;
+    height: 15.7%;
+}
+
+    .tableBottom .shiftBar
+    {
+        height: 50%;
+    }
+.shiftBar .dotBar
+{
+    margin:auto;
+    height:100%;
+}
+.dotBar .dot
+{
+	width: 2.2em;
+	height: 100%;
+	background-image: url(../img/whiteDot.png);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+	background-size: 0.9em auto;
+    float:left;
+}
+.dotBar .active{
+	background-image: url(../img/blueDot.png);	
+}
+
+    .tableBottom .power
+    {
+        height: 50%;
+        position:relative;
+    }
+.power div.center
+{
+    position:absolute;
+    margin:auto;
+    bottom:0;
+}
+.power span
+{
+    font-size: 1.1em;
+    line-height: 2em;
+    color: #fbfbfb;
+}
+.power .yiyue
+{
+    background-image:url('../img/footer.png');
+    background-repeat:no-repeat;
+    background-position:right bottom;
+    background-size:auto 1.4em;
+    display:inline-block;
+    width:6.3em;
+    margin-right:0.5em;
+    height:1.4em;   
+}
+
+.noteTop
+{
+    width: 100%;
+    height: 20.3%;
+    background: #ea6463;
+}
+
+.note
+{
+    width: 100%;
+    height: 64%;
+    -webkit-box-shadow: 0px 0px 20px #3c3b3b;
+    box-shadow: 0px 0px 20px #3c3b3b;
+    background: #fbfbfb;
+}
+
+.noteTrangle
+{
+    width: 100%;
+    height: 2.5%;
+    background-image: url(../img/trangle.png);
+    background-position: center top;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
+.noteContent
+{
+    width: 100%;
+    height: 76.2%;
+    font-size: 1.5em;
+    line-height: 2em;
+    position:relative;
+    overflow:hidden;
+}
+.rollElement,.rollElement2{
+	width:100%;
+	height:auto;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.noteContent2
+{
+    width: 100%;
+    height: 97%;
+    font-size: 1.5em;
+    line-height: 2em;
+    background: #fbfbfb;
+    position:relative;
+    overflow:hidden;
+}
+    .video .border
+    {
+        width:100%;
+        height:1.5%;
+        background:#e68d00;
+    }
+.notepadding
+{
+    padding-top: 5%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+.noteBottom
+{
+    width: 100%;
+    height: 1%;
+    background: #ea6463;
+}
+
+.notegrave
+{
+    width: 100%;
+    height: 3.2%;
+}
+
+.video
+{
+    width: 100%;
+    height: 45%;
+    -webkit-box-shadow: 0px 2px 2px #3c3b3b;
+    box-shadow: 0px 2px 2px #3c3b3b;
+    background: #a8d7d8;
+}
+
+.videopadding
+{
+    height: 3%;
+}
+
+.videoContent
+{
+    margin: auto;
+    height: 94%;
+    width: 95%;
+    background: #fbfbfb;
+}
+
+.spanImg
+{
+    display: inline-block;
+    width: 4em;
+    height: 4em;
+    margin-left: 2em;
+    background-image: url(../img/icon.png);
+    background-size: 1.8em 1.8em;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+}
+
+.spanTitle
+{
+    font-size: 1.2em;
+    line-height: 2em;
+    color: #fbfbfb;
+    padding-right: 1.5em;
+}
+
+.spanBolder
+{
+    font-size: 2em;
+}
+/* ul li >div{ */
+/*  	width: 100%; */
+/*     height: 100%; */
+/* } */
+/* #schdl-bd,.cal-table-bd-wrap,.cal-tab-bd{ */
+/* 	width: 100%; */
+/*     height: 100%; */
+/* } */
+/* <!--.tdwrap,.sess --> */
+/* .cal-tab-bd td{ */
+/* 	width: 14.2%; */
+/*     height: 100%; */
+/* } */

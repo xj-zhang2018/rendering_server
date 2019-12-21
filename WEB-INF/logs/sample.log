@@ -1,0 +1,190 @@
+[framework] 2018-07-18 21:18:01,969 - com.sshtools.j2ssh.transport.cipher.SshCipherFactory -0    [main] 
+ INFO  com.sshtools.j2ssh.transport.cipher.SshCipherFactory  - Loading supported cipher algorithms
+[framework] 2018-07-18 21:18:02,140 - com.sshtools.j2ssh.transport.kex.SshKeyExchangeFactory -171  [main] 
+ INFO  com.sshtools.j2ssh.transport.kex.SshKeyExchangeFactory  - Loading key exchange methods
+[framework] 2018-07-18 21:18:02,162 - com.sshtools.j2ssh.configuration.ConfigurationLoader -193  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - JAVA version is 1.7.0_17
+[framework] 2018-07-18 21:18:02,169 - com.sshtools.j2ssh.configuration.ConfigurationLoader -200  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\access-bridge-64.jar being added to classpath
+[framework] 2018-07-18 21:18:02,171 - com.sshtools.j2ssh.util.ExtensionClassLoader -202  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\access-bridge-64.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,171 - com.sshtools.j2ssh.configuration.ConfigurationLoader -202  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\dnsns.jar being added to classpath
+[framework] 2018-07-18 21:18:02,172 - com.sshtools.j2ssh.util.ExtensionClassLoader -203  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\dnsns.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,172 - com.sshtools.j2ssh.configuration.ConfigurationLoader -203  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\jaccess.jar being added to classpath
+[framework] 2018-07-18 21:18:02,173 - com.sshtools.j2ssh.util.ExtensionClassLoader -204  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\jaccess.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,174 - com.sshtools.j2ssh.configuration.ConfigurationLoader -205  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\localedata.jar being added to classpath
+[framework] 2018-07-18 21:18:02,176 - com.sshtools.j2ssh.util.ExtensionClassLoader -207  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\localedata.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,176 - com.sshtools.j2ssh.configuration.ConfigurationLoader -207  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\sunec.jar being added to classpath
+[framework] 2018-07-18 21:18:02,178 - com.sshtools.j2ssh.util.ExtensionClassLoader -209  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\sunec.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,178 - com.sshtools.j2ssh.configuration.ConfigurationLoader -209  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\sunjce_provider.jar being added to classpath
+[framework] 2018-07-18 21:18:02,180 - com.sshtools.j2ssh.util.ExtensionClassLoader -211  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\sunjce_provider.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,180 - com.sshtools.j2ssh.configuration.ConfigurationLoader -211  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\sunmscapi.jar being added to classpath
+[framework] 2018-07-18 21:18:02,181 - com.sshtools.j2ssh.util.ExtensionClassLoader -212  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\sunmscapi.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,182 - com.sshtools.j2ssh.configuration.ConfigurationLoader -213  [main] 
+ INFO  com.sshtools.j2ssh.configuration.ConfigurationLoader  - Extension C:\Program Files\Java\jre7\lib\ext\zipfs.jar being added to classpath
+[framework] 2018-07-18 21:18:02,183 - com.sshtools.j2ssh.util.ExtensionClassLoader -214  [main] 
+ INFO  com.sshtools.j2ssh.util.ExtensionClassLoader  - Adding C:\Program Files\Java\jre7\lib\ext\zipfs.jar to the extension classpath
+[framework] 2018-07-18 21:18:02,184 - com.sshtools.j2ssh.transport.kex.SshKeyExchangeFactory -215  [main] 
+ DEBUG com.sshtools.j2ssh.transport.kex.SshKeyExchangeFactory  - The default key exchange is not set! using first in list
+[framework] 2018-07-18 21:18:02,188 - com.sshtools.j2ssh.transport.publickey.SshKeyPairFactory -219  [main] 
+ INFO  com.sshtools.j2ssh.transport.publickey.SshKeyPairFactory  - Loading public key algorithms
+[framework] 2018-07-18 21:18:02,202 - com.sshtools.j2ssh.transport.publickey.SshKeyPairFactory -233  [main] 
+ DEBUG com.sshtools.j2ssh.transport.publickey.SshKeyPairFactory  - The default public key is not set! using first in list
+[framework] 2018-07-18 21:18:02,204 - com.sshtools.j2ssh.transport.compression.SshCompressionFactory -235  [main] 
+ INFO  com.sshtools.j2ssh.transport.compression.SshCompressionFactory  - Loading compression methods
+[framework] 2018-07-18 21:18:02,217 - com.sshtools.j2ssh.transport.hmac.SshHmacFactory -248  [main] 
+ INFO  com.sshtools.j2ssh.transport.hmac.SshHmacFactory  - Loading message authentication methods
+[framework] 2018-07-18 21:18:02,293 - com.sshtools.j2ssh.transport.TransportProtocolCommon -324  [main] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Starting transport protocol
+[framework] 2018-07-18 21:18:02,297 - com.sshtools.j2ssh.transport.TransportProtocolCommon -328  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Registering transport protocol messages with inputstream
+[framework] 2018-07-18 21:18:02,554 - com.sshtools.j2ssh.transport.TransportProtocolCommon -585  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Negotiating protocol version
+[framework] 2018-07-18 21:18:02,554 - com.sshtools.j2ssh.transport.TransportProtocolCommon -585  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Local identification: SSH-2.0-http://www.sshtools.com J2SSH [CLIENT]
+[framework] 2018-07-18 21:18:02,554 - com.sshtools.j2ssh.transport.TransportProtocolCommon -585  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - EOL is guessed at CR+LF
+[framework] 2018-07-18 21:18:02,555 - com.sshtools.j2ssh.transport.TransportProtocolCommon -586  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Remote identification: SSH-2.0-OpenSSH_5.3
+[framework] 2018-07-18 21:18:02,555 - com.sshtools.j2ssh.transport.TransportProtocolCommon -586  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Protocol negotiation complete
+[framework] 2018-07-18 21:18:02,555 - com.sshtools.j2ssh.transport.TransportProtocolCommon -586  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - SshMsgKexInit:
+Supported Kex [diffie-hellman-group1-sha1]
+Supported Public Keys [ssh-rsa, ssh-dss]
+Supported Encryption Client->Server [blowfish-cbc, 3des-cbc]
+Supported Encryption Server->Client [blowfish-cbc, 3des-cbc]
+Supported Mac Client->Server [hmac-sha1, hmac-md5-96, hmac-sha1-96, hmac-md5]
+Supported Mac Server->Client [hmac-sha1, hmac-md5-96, hmac-sha1-96, hmac-md5]
+Supported Compression Client->Server [none]
+Supported Compression Server->Client [none]
+Supported Languages Client->Server []
+Supported Languages Server->Client []
+First Kex Packet Follows [FALSE]
+[framework] 2018-07-18 21:18:02,556 - com.sshtools.j2ssh.transport.TransportProtocolCommon -587  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Sending SSH_MSG_KEX_INIT
+[framework] 2018-07-18 21:18:02,559 - com.sshtools.j2ssh.transport.TransportProtocolCommon -590  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Received SSH_MSG_KEX_INIT
+[framework] 2018-07-18 21:18:02,559 - com.sshtools.j2ssh.transport.TransportProtocolCommon -590  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Received remote key exchange init message
+[framework] 2018-07-18 21:18:02,559 - com.sshtools.j2ssh.transport.TransportProtocolCommon -590  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - SshMsgKexInit:
+Supported Kex [diffie-hellman-group-exchange-sha256, diffie-hellman-group-exchange-sha1, diffie-hellman-group14-sha1, diffie-hellman-group1-sha1]
+Supported Public Keys [ssh-rsa, ssh-dss]
+Supported Encryption Client->Server [aes128-ctr, aes192-ctr, aes256-ctr, arcfour256, arcfour128, aes128-cbc, 3des-cbc, blowfish-cbc, cast128-cbc, aes192-cbc, aes256-cbc, arcfour, rijndael-cbc@lysator.liu.se]
+Supported Encryption Server->Client [aes128-ctr, aes192-ctr, aes256-ctr, arcfour256, arcfour128, aes128-cbc, 3des-cbc, blowfish-cbc, cast128-cbc, aes192-cbc, aes256-cbc, arcfour, rijndael-cbc@lysator.liu.se]
+Supported Mac Client->Server [hmac-md5, hmac-sha1, umac-64@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-sha1-96, hmac-md5-96]
+Supported Mac Server->Client [hmac-md5, hmac-sha1, umac-64@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-sha1-96, hmac-md5-96]
+Supported Compression Client->Server [none, zlib@openssh.com]
+Supported Compression Server->Client [none, zlib@openssh.com]
+Supported Languages Client->Server []
+Supported Languages Server->Client []
+First Kex Packet Follows [FALSE]
+[framework] 2018-07-18 21:18:02,559 - com.sshtools.j2ssh.transport.TransportProtocolCommon -590  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Starting key exchange
+[framework] 2018-07-18 21:18:02,559 - com.sshtools.j2ssh.transport.TransportProtocolCommon -590  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Determine Algorithm
+[framework] 2018-07-18 21:18:02,560 - com.sshtools.j2ssh.transport.TransportProtocolCommon -591  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Client Algorithms: [diffie-hellman-group1-sha1]
+[framework] 2018-07-18 21:18:02,560 - com.sshtools.j2ssh.transport.TransportProtocolCommon -591  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Server Algorithms: [diffie-hellman-group-exchange-sha256, diffie-hellman-group-exchange-sha1, diffie-hellman-group14-sha1, diffie-hellman-group1-sha1]
+[framework] 2018-07-18 21:18:02,560 - com.sshtools.j2ssh.transport.TransportProtocolCommon -591  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Returning diffie-hellman-group1-sha1
+[framework] 2018-07-18 21:18:02,560 - com.sshtools.j2ssh.transport.TransportProtocolCommon -591  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Key exchange algorithm: diffie-hellman-group1-sha1
+[framework] 2018-07-18 21:18:02,561 - com.sshtools.j2ssh.transport.kex.DhGroup1Sha1 -592  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.kex.DhGroup1Sha1  - Starting client side key exchange.
+[framework] 2018-07-18 21:18:02,584 - com.sshtools.j2ssh.transport.TransportProtocolCommon -615  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Sending SSH_MSG_KEXDH_INIT
+[framework] 2018-07-18 21:18:02,589 - com.sshtools.j2ssh.transport.TransportProtocolCommon -620  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Processing SSH_MSG_KEXDH_REPLY
+[framework] 2018-07-18 21:18:02,606 - com.sshtools.j2ssh.transport.TransportProtocolCommon -637  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Determine Algorithm
+[framework] 2018-07-18 21:18:02,606 - com.sshtools.j2ssh.transport.TransportProtocolCommon -637  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Client Algorithms: [ssh-rsa, ssh-dss]
+[framework] 2018-07-18 21:18:02,606 - com.sshtools.j2ssh.transport.TransportProtocolCommon -637  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Server Algorithms: [ssh-rsa, ssh-dss]
+[framework] 2018-07-18 21:18:02,606 - com.sshtools.j2ssh.transport.TransportProtocolCommon -637  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Returning ssh-rsa
+[framework] 2018-07-18 21:18:02,609 - com.sshtools.j2ssh.transport.HostKeyVerification -640  [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.HostKeyVerification  - Verifying 192.168.50.6 host key
+[framework] 2018-07-18 21:18:02,609 - com.sshtools.j2ssh.transport.HostKeyVerification -640  [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.HostKeyVerification  - Fingerprint: 2048: f8 5d 69 a2 6a fb f 63 26 60 32 6 99 9d ab f1
+[framework] 2018-07-18 21:18:10,397 - com.sshtools.j2ssh.transport.HostKeyVerification -8428 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.HostKeyVerification  - Allowing 192.168.50.6 with fingerprint 2048: f8 5d 69 a2 6a fb f 63 26 60 32 6 99 9d ab f1
+[framework] 2018-07-18 21:18:10,398 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8429 [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - The host key signature is  valid
+[framework] 2018-07-18 21:18:10,398 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8429 [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Sending SSH_MSG_NEWKEYS
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Received SSH_MSG_NEWKEYS
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Completing key exchange
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Making keys from key exchange output
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Creating algorithm objects
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Determine Algorithm
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Client Algorithms: [blowfish-cbc, 3des-cbc]
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Server Algorithms: [aes128-ctr, aes192-ctr, aes256-ctr, arcfour256, arcfour128, aes128-cbc, 3des-cbc, blowfish-cbc, cast128-cbc, aes192-cbc, aes256-cbc, arcfour, rijndael-cbc@lysator.liu.se]
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8430 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Returning blowfish-cbc
+[framework] 2018-07-18 21:18:10,399 - com.sshtools.j2ssh.transport.cipher.SshCipherFactory -8430 [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.cipher.SshCipherFactory  - Creating new blowfish-cbc cipher instance
+[framework] 2018-07-18 21:18:10,445 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8476 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Determine Algorithm
+[framework] 2018-07-18 21:18:10,445 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8476 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Client Algorithms: [blowfish-cbc, 3des-cbc]
+[framework] 2018-07-18 21:18:10,446 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8477 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Server Algorithms: [aes128-ctr, aes192-ctr, aes256-ctr, arcfour256, arcfour128, aes128-cbc, 3des-cbc, blowfish-cbc, cast128-cbc, aes192-cbc, aes256-cbc, arcfour, rijndael-cbc@lysator.liu.se]
+[framework] 2018-07-18 21:18:10,446 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8477 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Returning blowfish-cbc
+[framework] 2018-07-18 21:18:10,446 - com.sshtools.j2ssh.transport.cipher.SshCipherFactory -8477 [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.cipher.SshCipherFactory  - Creating new blowfish-cbc cipher instance
+[framework] 2018-07-18 21:18:10,448 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8479 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Determine Algorithm
+[framework] 2018-07-18 21:18:10,448 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8479 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Client Algorithms: [hmac-sha1, hmac-md5-96, hmac-sha1-96, hmac-md5]
+[framework] 2018-07-18 21:18:10,448 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8479 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Server Algorithms: [hmac-md5, hmac-sha1, umac-64@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-sha1-96, hmac-md5-96]
+[framework] 2018-07-18 21:18:10,448 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8479 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Returning hmac-sha1
+[framework] 2018-07-18 21:18:10,452 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8483 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Determine Algorithm
+[framework] 2018-07-18 21:18:10,452 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8483 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Client Algorithms: [hmac-sha1, hmac-md5-96, hmac-sha1-96, hmac-md5]
+[framework] 2018-07-18 21:18:10,452 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8483 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Server Algorithms: [hmac-md5, hmac-sha1, umac-64@openssh.com, hmac-sha2-256, hmac-sha2-512, hmac-ripemd160, hmac-ripemd160@openssh.com, hmac-sha1-96, hmac-md5-96]
+[framework] 2018-07-18 21:18:10,453 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8484 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Returning hmac-sha1
+[framework] 2018-07-18 21:18:10,453 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8484 [Transport protocol 1] 
+ DEBUG com.sshtools.j2ssh.transport.TransportProtocolCommon  - Sending queued messages
+[framework] 2018-07-18 21:18:10,469 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8500 [main] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Sending SSH_MSG_SERVICE_REQUEST
+[framework] 2018-07-18 21:18:10,471 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8502 [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Received SSH_MSG_SERVICE_ACCEPT
+[framework] 2018-07-18 21:18:10,530 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8561 [main] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Sending SSH_MSG_USERAUTH_REQUEST
+[framework] 2018-07-18 21:18:10,829 - com.sshtools.j2ssh.transport.TransportProtocolCommon -8860 [Transport protocol 1] 
+ INFO  com.sshtools.j2ssh.transport.TransportProtocolCommon  - Received SSH_MSG_USERAUTH_SUCCESS
+[framework] 2018-07-18 21:18:10,830 - com.sshtools.j2ssh.connection.ConnectionProtocol -8861 [main] 
+ INFO  com.sshtools.j2ssh.connection.ConnectionProtocol  - Registering connection protocol messages
+[framework] 2018-07-18 21:18:10,833 - com.sshtools.j2ssh.transport.Service -8864 [main] 
+ INFO  com.sshtools.j2ssh.transport.Service  - ssh-connection has been requested
+[framework] 2018-07-18 21:18:10,834 - com.sshtools.j2ssh.transport.Service -8865 [main] 
+ INFO  com.sshtools.j2ssh.transport.Service  - Starting ssh-connection service thread

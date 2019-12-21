@@ -1,0 +1,20 @@
+#PBS -q batch
+#PBS -l nodes=2:ppn=1
+
+#echo $PBS_O_WORKDIR
+
+
+export MV2_ENABLE_AFFINITY=0
+export PATH=/home/RenderFarm/RenderWing/bin/:/home/RenderFarm/openmpi-install/bin/:$PATH
+export LD_LIBRARY_PATH=/home/RenderFarm/RenderWing/lib/:/home/RenderFarm/openmpi-install/lib/
+export PIXIEHOME=/home/RenderFarm/RenderWing/
+
+cat $PBS_NODEFILE | uniq > nodefile.txt
+NP=`cat nodefile.txt | wc -l`
+#NP=`expr $NP + $NP` # use 2*node processes
+cat nodefile.txt > nodefile.txt.tmp
+#cat nodefile.txt >> nodefile.txt.tmp
+sort nodefile.txt.tmp > nodefile.txt
+rm nodefile.txt.tmp -f
+
+mpirun -hostfile nodefile.txt -n $NP rUnit -t 8 -d /home/RenderFarm/building/ -s 192.168.1.100

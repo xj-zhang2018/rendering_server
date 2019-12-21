@@ -1,0 +1,29 @@
+/* ui-form */
+.ui-form-sitefont fieldset{ background:url(../img/line-1.png) 0 100% repeat-x; margin-bottom:18px; padding-bottom:1px; border:none;}
+.ui-form-sitefont legend{display:none;}
+.ui-form-sitefont .Validform_checktip.tip{color:#fee;}
+.ui-form-sitefont .form-field{margin-bottom:18px;}
+.ui-form-sitefont .form-field label{display:block; width:150px; height:32px; line-height:32px; text-align:right; float:left; clear:left; cursor:pointer; padding-right:10px; color:#555;}
+.ui-form-sitefont select{width:233px; height:32px; padding-left:5px; border:1px solid #b3b3b3; font-size:16px;}
+.ui-form-sitefont input[type="text"], .ui-form-sitefont input[type="password"]{width:210px; height:32px; line-height:32px; border:1px solid #b3b3b3; padding:0 10px; font-size:16px;}
+.ui-form-sitefont input[type="button"]{background:#2d7dce; padding:7px 25px; margin-left:160px; color:#fff; border:none; cursor:pointer; -moz-box-shadow:1px 1px 2px #bbb; -webkit-box-shadow:1px 1px 2px #bbb; box-shadow:1px 1px 2px #bbb;
+*filter: progid:DXImageTransform.Microsoft.Glow(color=#eeeeee ,strength=1) progid:DXImageTransform.Microsoft.Shadow(color=#bbbbbb,direction=135,strength=2);}
+.ui-form-sitefont input[type="button"]:hover{background:#388bdf;}
+.ui-form-sitefont input[type="button"].left {margin-left:0;}
+
+#newJob-form .help{color:##BE1717; font-size:12px;}
+
+/*validform*/
+
+.Validform_checktip{margin-left:8px; line-height:20px; height:20px; overflow:hidden; color:#999; font-size:13px;}
+.Validform_right{ color:#ccffcc; padding-left:20px; background:url(../img/right.png) no-repeat left center;}
+.Validform_wrong{ color:#EE146B; padding-left:20px; white-space:nowrap; background:url(../img/error.png) no-repeat left center;}
+.Validform_loading{ padding-left:20px; background:url(../img/onLoad.gif) no-repeat left center;}
+.Validform_error{ background-color:#ffe7e7;}
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999'); box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#999;
+background: -moz-linear-gradient(top, #999, #666 100%); background: -webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#666)); filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#999999', endColorstr='#666666');}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#ccc;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #bbb; border-top:none; text-align:left;}

@@ -1,0 +1,91 @@
+#schdl-hd .intru-name{background:url(../img/icon-15px.png) 0 6px no-repeat; padding-left:23px; color:#555; font-size:22px; float:left; height:30px; line-height:30px; margin-right:15px;}
+
+.intru-switch{float:left; margin-right:30px; position:relative; z-index:50;}
+.intru-switch .box-t{background:url(../img/icon-arrow.png) #e2f0ed 6px 10px no-repeat; display:block; width:28px; height:26px; border:1px solid #d2e2de; border-radius:2px; text-indent:-999em; position:relative; z-index:50;}
+.intru-switch .box-c{display:none; background:#fff; position:absolute; right:0; border:1px solid #d2e2de; z-index:45;}
+.intru-switch .box-c>li>a{display:block; padding:7px 10px; white-space:nowrap; text-align:right; color:#555; font-weight:bold;}
+.intru-switch:hover .box-t{background:url(../img/icon-arrow.png) #fff 6px -15px no-repeat; border-radius:0; border-bottom:none; margin-bottom:-1px;}
+.intru-switch:hover .box-c{display:block;}
+.intru-switch .box-c>li>a:hover{background:#eee;}
+
+.instru-manager{padding-top:5px;}
+.instru-manager .manager-name-t{float:left;}
+.instru-manager .manager-name{float:left; margin-right:3px;}
+.instru-manager .contact{float:left; margin-right:5px; position:relative;}
+.instru-manager .contact-t{background:url(../img/icon-15px.png) 0 -98px no-repeat; display:block; width:22px; height:21px; text-indent:-99px; overflow:hidden; border:1px solid transparent;}
+.instru-manager .contact-c{ display:none; background:#eee; position:absolute; right:0; padding:5px 10px; border:1px solid #ccc; white-space:nowrap; z-index:59;}
+.instru-manager .contact:hover .contact-t{ background-color:#eee; border:1px solid #ccc; border-bottom-color:#eee; margin-bottom:-1px; position:relative; z-index:60;}
+.instru-manager .contact:hover .contact-c{display:block;}
+
+#schdl-bd{clear:both;}
+
+#cal-hd{padding:20px 0 10px;}
+#cal-hd .resv-tip{float:left;}
+#cal-hd .resv-tip .flag-icon{background:url(../img/icon-tip-1.png) 0 0 no-repeat; display:inline-block; width:24px; height:17px; margin:0 3px -5px 0;}
+#cal-hd .prev-next{float:right;}
+#cal-hd .prev-next a{display:inline-block; background:#e2f0ed; padding:0 5px; margin-left:5px; border:1px solid #d2e2de; border-radius:1px;}
+#cal-hd .prev-next a:hover{background:#ebfffb;}
+
+.cal-tab-hd{background:#e2f0ed; height:34px; width:100%; border:1px solid #c9cbcc; border-bottom:none;}
+.cal-tab-hd td{height:34px; line-height:34px; text-align:center; font-weight:bold; padding-left:20px;}
+
+.cal-tab-bd{width:100%; border:1px solid #c9cbcc; border-top:none;}
+.cal-tab-bd tbody{color:#008000; font-size:13px;}
+.cal-tab-bd tbody>tr{border:1px solid #c9cbcc; border-top:none;}
+.cal-tab-bd tbody>tr>td{border-left:1px solid #c9cbcc;}
+.cal-tab-bd tbody td .tdwrap{width:100%; height:100%; position:relative;}
+.cal-tab-bd tbody>tr>td:first-child{border-left:none;}
+
+
+.cal-tab-bd .sess{display:block; text-align:center; border-top:1px solid #ddd; cursor:pointer;}
+.cal-tab-bd .workday .sess:hover{background:#cce9ff;} /*�����û���ֻ�й������ڵĹ���ʱ���Լ��ȫ���û� ��������ȫ���Լ��ֻ��ȫ����Լ������Ա������  ���� ��϶���⣬����Ա���޴�����   ����ͨ�û�restday sess��upopen sess��ʾ��δ���š�*/
+.cal-tab-bd .sess.past{color:#ccc; cursor:default;}
+.cal-tab-bd .sess.customSessGap{cursor:default;}
+.cal-tab-bd .sess.current{}
+
+.cal-tab-bd .sess.resttime{background:#eceff6; color:#4a5c57;}
+.cal-tab-bd .sess.middayRestTime{background:#fafafa; color:#ccc; cursor:default;}
+.cal-tab-bd .workday .sess.past{background:#fafafa; color:#ccc;}
+.cal-tab-bd .restday .sess{background:#fafafa; color:#fafafa; border-color:transparent; cursor:default;  position:relative;}
+.cal-tab-bd .sess.unopen{background:#fafafa; color:#fafafa; border-color:transparent; cursor:default;}
+
+.cal-tab-bd .sess.selectedSess,.cal-tab-bd .sess.selectedSess:hover{background:#36c; color:#fff;}
+.cal-tab-bd .sess.zeroHeight{display:none;}
+
+.cal-tab-bd .event{position:absolute; left:0; width:100%; text-align:center; cursor:pointer;}
+.cal-tab-bd .event-out-wrap{height:inherit; overflow:hidden;}
+.cal-tab-bd .event-wrap{position:static; display:table; height:100%; width:100%;}
+.cal-tab-bd .event-wrap{*position:absolute; *top:50%; *left:0; *height:auto;}/*ie7 以下*/
+.cal-tab-bd .event-bd{position:static; display:table-cell; vertical-align:middle;}
+.cal-tab-bd .event-bd{*position:relative; *top:-50%; *left:0;}
+
+.cal-tab-bd .event.user-resv{background:#ff0000;} .cal-tab-bd .event.user-resv,.cal-tab-bd .event.user-resv a{color:#FFFFFF;}
+.cal-tab-bd .event.my-resv{background:#479ac7;} .cal-tab-bd .event.my-resv,.cal-tab-bd .event.my-resv a{color:#FFFFFF;}
+.cal-tab-bd .event.manager-resv{background:#00b271;} .cal-tab-bd .event.manager-resv,.cal-tab-bd .event.manager-resv a{color:#FFFFFF;}
+.cal-tab-bd .event.train{background:#e1ebdf;} .cal-tab-bd .event.train,.cal-tab-bd .event.train a{color:#0d8014;}
+.cal-tab-bd .event.repair{background:#ffc4b2;} .cal-tab-bd .event.repair,.cal-tab-bd .event.repair a{color:#a61400;}
+.cal-tab-bd .event.maintenance{background:#b2e7ff;} .cal-tab-bd .event.maintenance,.cal-tab-bd .event.maintenance a{color:#007fa6;} 
+.cal-tab-bd .event.holiday{background:#c4f5ea;} .cal-tab-bd .event.holiday,.cal-tab-bd .event.holiday a{color:#063;} 
+.cal-tab-bd .event.maintenance .resv-detail-pop{background:#2192c6;}
+
+.cal-tab-bd .event.current{}
+.cal-tab-bd .event.past{background:#eee; color:#888;}
+
+
+.resv-detail-pop{display:none; background:#2e86d2; color:#fff; position:absolute; z-index:50; top:0; left:0; min-width:100%; min-height:100%; float:left;}
+.resv-pop-wap{margin:10px;}
+
+ .resv-type{font-weight:bold;}
+ .manager-name{font-size:16px;}
+ .cellphone .icon{background:url(../img/phone.png) 0 0 no-repeat; text-indent:-9999em; display:inline-block; width:10px; height:20px; vertical-align:middle;}
+ .cellphone{font-size:13px; border-top:1px solid #ddd; width:140px; margin:0 auto;}
+ .memory .icon{background:url(../img/memory.png) 0 0 no-repeat; text-indent:-9999em; display:inline-block; width:10px; height:20px; vertical-align:middle;}
+ .memory{font-size:13px; border-top:1px solid #ddd; width:140px; margin:0 auto;}
+ .processor .icon{background:url(../img/processor.png) 0 0 no-repeat; text-indent:-9999em; display:inline-block; width:10px; height:20px; vertical-align:middle;}
+ .processor{font-size:13px; border-top:1px solid #ddd; width:140px; margin:0 auto;}
+.resv-detail-pop .resv-desc{}
+
+.cal-tab-bd .event .resv-detail-pop .cancel{background:#f11; display:inline-block; padding:1px 5px; margin:8px 0 0; color:#fff; border:none; cursor:pointer; -moz-box-shadow:1px 1px 2px #fbb; -webkit-box-shadow:1px 1px 2px #bbb; box-shadow:1px 1px 2px #fbb;
+*filter: progid:DXImageTransform.Microsoft.Glow(color=#eeeeee ,strength=1) progid:DXImageTransform.Microsoft.Shadow(color=#ffbbbb,direction=135,strength=2); }
+
+ 
