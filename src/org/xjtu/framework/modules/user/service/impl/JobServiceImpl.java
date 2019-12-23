@@ -376,6 +376,11 @@ public class JobServiceImpl implements JobService {
 			//10.25 Thys 指令运行指定的所有帧
 			String allFrame = "";
 			
+			//Thys 预渲染所有帧
+			String preAllFrame = "";
+			ArrayList<Integer> frameToPreRender = new ArrayList<Integer>();
+			
+			
 			//10.25 Thys 把每帧的数值存进frameToRender[],把每帧的帧名存进mapScenePath
 			int[] frameToRender = new int[frameNums];
 			int k=0;
@@ -503,8 +508,120 @@ public class JobServiceImpl implements JobService {
 					int SampleRate=job.getSampleRate();
 					int x=job.getxResolution();
 					int y=job.getyResolution();
+					
+					int preFrameNum = (int) Math.rint(frameNums * SampleRate);
 		            
-					//sed -i -e '1 iaaaa\nbbbb\ncccc'  test
+					//Thys 新预渲染
+					//预渲染抽帧参数
+					int level = 0;
+					int levelNum = 1;
+					
+					//用来存每层帧数
+					ArrayList<Integer> frameNumToPerLevel = new ArrayList<Integer>();
+					//用来记录每层起始和终止位置S--start,E--end
+					ArrayList<Integer> perLevelSE = new ArrayList<Integer>();
+					perLevelSE.add(frameToRender[0]);
+					//记录未分配余数时，已分配的帧数
+					int frameNumNoRemainder = 0;
+					//设置层最大值,根据渲染帧数数量级来确定
+					int levelNumMax;
+					int levelNumMaxK;
+					levelNumMax = 1;
+					levelNumMaxK = 10;
+					while (frameNums / levelNumMaxK != 0) {
+						levelNumMax *= 10;
+						levelNumMaxK *= 10;
+					}
+					
+					//先确定预渲染层数level，和每层分配的初始帧数（不处理余数）
+					for (int j = 1;j < frameToRender.length;j ++) {			
+						if (frameToRender[j] == (frameToRender[j - 1] + 1)) {				
+							if (levelNum < (levelNumMax / 10)) {					
+								levelNum ++;					
+							} else {
+								perLevelSE.add(frameToRender[j - 1]);
+								
+								int preFrameTemp = (int) ((double) levelNum / frameNums * preFrameNum);
+								frameNumToPerLevel.add(preFrameTemp);
+								frameNumNoRemainder += preFrameTemp;
+								
+								level ++;
+								perLevelSE.add(frameToRender[j]);
+								levelNum = 1;					
+							}
+							
+							if (j == frameToRender.length - 1) {
+								perLevelSE.add(frameToRender[j]);
+								
+								int preFrameTemp = (int) ((double) levelNum / frameNums * preFrameNum);
+								frameNumToPerLevel.add(preFrameTemp);
+								frameNumNoRemainder += preFrameTemp;
+							}
+						} else {
+							perLevelSE.add(frameToRender[j - 1]);
+							
+							int preFrameTemp = (int) ((double) levelNum / frameNums * preFrameNum);
+							frameNumToPerLevel.add(preFrameTemp);
+							frameNumNoRemainder += preFrameTemp;
+							
+							level ++;
+							perLevelSE.add(frameToRender[j]);
+							levelNum = 1;				
+						}
+					}
+					
+					//对抽取预渲染总帧数预处理,提高精度
+					int preFrameNumRemainder = preFrameNum % (level + 1);
+					//对于预渲染帧数与层数相差不多preFrameNumRemainder得改为差值
+					if(Math.abs(preFrameNum - level) <= 5) {
+						preFrameNumRemainder = Math.abs(preFrameNum - frameNumNoRemainder);
+					}
+					
+					//System.out.println("preFrameNumRemainder " + preFrameNumRemainder);
+					
+					//确定每层所取帧数
+					//把余数先放奇数层帧数，多出来的再放偶数层，直到分配完
+					int frameNumToPerLevelFlag = 0;
+					while (preFrameNumRemainder > 0) {				
+						if(frameNumToPerLevelFlag <= level) {
+							frameNumToPerLevel.set(frameNumToPerLevelFlag, frameNumToPerLevel.get(frameNumToPerLevelFlag) + 1);
+						} else {
+							//如果是奇数层，就减去level + 1，注意数组从0起
+							if (level % 2 == 0) {
+								frameNumToPerLevel.set(frameNumToPerLevelFlag - level - 1, frameNumToPerLevel.get(frameNumToPerLevelFlag - level - 1) + 1);
+							} else {
+								frameNumToPerLevel.set(frameNumToPerLevelFlag - level, frameNumToPerLevel.get(frameNumToPerLevelFlag - level) + 1);
+							}
+						}
+						
+						frameNumToPerLevelFlag += 2;
+						preFrameNumRemainder --;
+					}
+
+					
+					
+					//System.out.println("frameNumToPerLevel " + frameNumToPerLevel);
+					
+					
+					//System.out.println("perLevelSE " + perLevelSE);
+					
+					//调用状态转移的方法，保存每层要预渲染的帧数
+					int levelSEFlag = -1;
+					for (int j = 0;j <= level;j ++) {
+						frameToPreRender.addAll(statusRandom(perLevelSE.get(++ levelSEFlag),perLevelSE.get(++ levelSEFlag),frameNumToPerLevel.get(j)));
+					}
+					
+					for(int j = 0 ; j < frameToPreRender.size(); j ++) {
+						preAllFrame += (frameToPreRender.get(i) + ",");
+					}
+					
+					//10.25 Thys 去除尾部多余的逗号
+					preAllFrame = preAllFrame.substring(0, preAllFrame.length()-1);
+					
+					
+					//新预渲染结束
+					
+					/*//sed -i -e '1 iaaaa\nbbbb\ncccc'  test
 					String sedContent="";
 
 					int PreframeNum=(int)(FrameNumbers*SampleRate*0.01);
@@ -572,7 +689,7 @@ public class JobServiceImpl implements JobService {
 				
 					//end//
 					
-					log.info("preRender frame list is"+PreFramePath);
+					log.info("preRender frame list is"+PreFramePath);*/
 					
 				}
 				//------------------------------------澶勭悊闃舵-------------------------------------------
@@ -605,9 +722,7 @@ public class JobServiceImpl implements JobService {
 		    		String renderInstruct="/home/export/online1/systest/swsdu/xijiao/RWing1021/dist/RWing";
 		    		String Cmd="cd /home/export/online1/systest/swsdu/xijiao/RWing1021";
 		    		String shenweiPbsCommand="";
-		    		
 						Date stime=new Date();//姝ゅ鍏堝叏閮ㄦ覆鏌擄紝鍚庨潰鏇存敼
-						
 						String jobName=job.getCameraName();
 						if(renderEngineName.equals("RWing"))
 							//shenweiPbsCommand="-q "+fuWuListName+" -o /home/export/online1/systest/swsdu/xijiao/Outprint/"+newUnitId+".out"+"-l -b -share_size 7168 -n 31 "+ renderInstruct+" "+filePath+"/";
@@ -642,12 +757,11 @@ public class JobServiceImpl implements JobService {
 				unit.setIdleNumber(0);
 				unitService.addUnit(unit);
 				log.info("Rendering Unit initialized");
-				// 杩涜浣滀笟鐨勫垝鍒嗘墽琛岀紪鍐�
+				
 				if (i < unitsNumber - remain) {
-					// 鎵挎媴浠诲姟閲忎负between鐨勮妭鐐逛釜鏁颁负nu-remain
-					temp = s + between - 1;// 瀹氫箟涓�涓复鏃剁粓鐐瑰彉閲�
+					temp = s + between - 1;
 				} else {
-					temp = s + between;// 瀹氫箟涓�涓复鏃剁粓鐐瑰彉閲�
+					temp = s + between;
 				}
 				// 璁板綍浠诲姟淇℃伅
 				Task task=new Task();
@@ -1024,8 +1138,34 @@ public class JobServiceImpl implements JobService {
 
 	}
 	
-	
-	
+	//状态转移算法
+	public ArrayList<Integer> statusRandom(int start,int end,int num) {
+		//用来记录抽取值
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		
+		int[] status = new int[end + 1];
+		for (int j = 0 ; j < num ; j ++) {
+			int random = (int) (Math.random() * (end - start) + start);
+			if (status[random] == 0) {
+				temp.add(random);
+				
+				status[random] = random == end ? start : (random + 1); // 不可能有在levelStart之前的数字 
+				//System.out.println("status" + status[random]);
+			} else { 
+				// 状态转移 
+				int index = random; 
+				do { 
+					index = status[index];
+				} while (status[index] != 0);
+				
+				temp.add(index);
+			     
+				status[index] = index == end ? start : (index + 1); // 不可能有在levelStart之前的数字 
+			} 
+		}
+		
+		return temp;
+	}
 	
 }
 
