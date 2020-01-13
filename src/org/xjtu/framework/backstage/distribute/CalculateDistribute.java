@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+
+import com.xj.framework.ssh.Shell;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.xjtu.framework.backstage.initialize.MayaJobInitialize;
@@ -77,12 +79,21 @@ public class CalculateDistribute {
 
 
 					log.info("已经设置解析任务状态");
-					PbsExecute  pbs=new PbsExecute(Cmd+" && bsub "+shenweiPbsCommand);
+//					PbsExecute  pbs=new PbsExecute(Cmd+" && bsub "+shenweiPbsCommand);
+					String tempCmd=Cmd+" && bsub "+shenweiPbsCommand;
 					log.info("已经运行完PbsExecute");
-					System.out.println("bsu comand is"+" bsub "+shenweiPbsCommand);
+					System.out.println("bsub comand is"+" bsub "+shenweiPbsCommand);
 
 					//PbsExecute  pbs=new PbsExecute("bsub "+shenweiPbsCommand);
-					     stdout=pbs.executeCmd().trim();
+//					     stdout=pbs.executeCmd().trim();
+//					stdout=pbs.executeCmd();
+
+					log.info("已经设置完解析任务状态");
+					Shell shell = new Shell("41.0.0.188", "swsdu", "swsdu@9012");
+					log.info("已经运行完new Shell(\"41.0.0.188\", \"swsdu\", \"swsdu@9012\");");
+					shell.execute(tempCmd);
+					log.info("已经运行完shell.execute(tempCmd);");
+
 					log.info("当前的运行指令是： stdout=pbs.executeCmd().trim();");
 					     log.info(" stdout的内容是 "+stdout);
 					     if(stdout!=null&&stdout.length()>0){

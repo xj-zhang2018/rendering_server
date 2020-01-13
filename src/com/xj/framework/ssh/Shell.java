@@ -1,5 +1,6 @@
 package com.xj.framework.ssh;
 import java.io.BufferedReader;
+import org.apache.commons.logging.Log;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,6 +13,8 @@ import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
+import org.apache.commons.logging.LogFactory;
+import org.xjtu.framework.core.util.PbsExecute;
 
 public class Shell {
     //杩滅▼涓绘満鐨刬p鍦板潃
@@ -24,7 +27,7 @@ public class Shell {
     public static final int DEFAULT_SSH_PORT = 22;  
     //淇濆瓨杈撳嚭鍐呭鐨勫鍣�
     private String stdout;
-
+    private static final Log log = LogFactory.getLog(Shell.class);
     /**
      * 鍒濆鍖栫櫥褰曚俊鎭�
      * @param ip
@@ -47,46 +50,49 @@ public class Shell {
         JSch jsch = new JSch();
       //  String pubKeyPath = "/home/export/online1/systest/swsdu/.ssh/id_rsa";
         MyUserInfo userInfo = new MyUserInfo();
-   
+        log.info(" 测试点1");
         try {
         	//jsch.addIdentity(pubKeyPath);
             //鍒涘缓session骞朵笖鎵撳紑杩炴帴锛屽洜涓哄垱寤簊ession涔嬪悗瑕佷富鍔ㄦ墦寮�杩炴帴
             Session session = jsch.getSession(username, ip, DEFAULT_SSH_PORT);
-           session.setPassword(password);
-           
+            log.info(" 测试点2");
+            session.setPassword(password);
             session.setUserInfo(userInfo);
             session.setConfig( "StrictHostKeyChecking" , "no" ); // 涓嶉獙璇乭ost-key锛岄獙璇佷細澶辫触銆�
-           
+            log.info(" 测试点3");
             session.connect();
-
+            log.info(" 测试点4");
             //鎵撳紑閫氶亾锛岃缃�氶亾绫诲瀷锛屽拰鎵ц鐨勫懡浠�
             Channel channel = session.openChannel("exec");
             ChannelExec channelExec = (ChannelExec)channel;
+            log.info(" 测试点5");
             channelExec.setCommand(command);
             channelExec.setInputStream(null);
-           
+            log.info(" 测试点6");
             InputStream input=channelExec.getInputStream();
-           
 
+            log.info(" 测试点7");
             channelExec.connect();
-            System.out.println("The remote command is :" + command);
+            log.info(" 测试点8");
+            System.out.println("远程主机命令 :" + command);
 
             //鎺ユ敹杩滅▼鏈嶅姟鍣ㄦ墽琛屽懡浠ょ殑缁撴灉
-           
-            stdout=getStream(input);
-            
+            log.info(" 测试点9");
+//            stdout=getStream(input);
+            log.info(" 测试点10");
             input.close();  
 
             // 寰楀埌returnCode
             if (channelExec.isClosed()) {  
-                returnCode = channelExec.getExitStatus();  
+                returnCode = channelExec.getExitStatus();
+                log.info(" 测试点11");
             }  
 
             // 鍏抽棴閫氶亾
             channelExec.disconnect();
             //鍏抽棴session
             session.disconnect();
-
+            log.info(" 测试点12");
         } catch (JSchException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
