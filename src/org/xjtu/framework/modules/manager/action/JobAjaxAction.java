@@ -1,13 +1,6 @@
 package org.xjtu.framework.modules.manager.action;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
+import com.xj.framework.ssh.ShellLocal;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.convention.annotation.Action;
@@ -17,17 +10,20 @@ import org.apache.struts2.convention.annotation.Result;
 import org.xjtu.framework.core.base.model.Job;
 import org.xjtu.framework.core.base.model.Project;
 import org.xjtu.framework.core.base.model.User;
-import org.xjtu.framework.core.util.LinuxInvoker;
-import org.xjtu.framework.core.util.PbsExecute;
-import org.xjtu.framework.core.util.StringUtil;
 import org.xjtu.framework.modules.user.service.JobService;
 import org.xjtu.framework.modules.user.service.ProjectService;
 import org.xjtu.framework.modules.user.service.UserService;
-import org.xjtu.framework.modules.user.service.impl.ClusterManageServiceImpl;
 import org.xjtu.framework.modules.user.vo.CameraProgressInfo;
 import org.xjtu.framework.modules.user.vo.ProjectInfo;
 
-import com.xj.framework.ssh.ShellLocal;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.xjtu.framework.backstage.schedule.JobSchedule.jobs_render;
+import static org.xjtu.framework.backstage.schedule.JobSchedule.temp_job_cameraName;
 
 @ParentPackage("json-default")
 @Namespace("/web/manager")
@@ -229,18 +225,6 @@ public class JobAjaxAction extends ManagerBaseAction{
 						 mapScenePath.put(s, homeDir+s);//鏂囦欢鍚嶏紝鏂囦欢鐨勫叏璺緞
 					}
 					System.out.println("mapScenePath is"+mapScenePath);
-					/*File file=new File(existedUser.getHomeDir());
-					if(file.isDirectory()){
-						File[] files=file.listFiles();
-						if (files != null && files.length > 0) {
-							mapScenePath=new HashMap<String, String>();
-							for(int i=0;i<files.length;i++){
-						    	 String s=files[i].getAbsolutePath();
-								 String[] ss=s.split("/");
-								 mapScenePath.put(ss[ss.length-1], s);
-							}
-						}						
-					}*/
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -262,6 +246,20 @@ public class JobAjaxAction extends ManagerBaseAction{
 	public String doJobStop(){
 		if(jobIds!=null){
 			for(int i=0;i<jobIds.size();i++){
+				Job job=jobService.findJobsById(jobIds.get(i));
+
+				for(int j=0;i<jobs_render.size();j++) {
+					if (jobs_render.get(j).getCameraName().equals(job.getCameraName())) {
+						log.info("当前的jobs_render[" + j + "]" + "被删除");
+						jobs_render.remove(j);
+					}
+				}
+
+				if (job.getCameraName().equals(temp_job_cameraName)){
+					log.info("正在执行停止job，执行前：temp_job_cameraName="+temp_job_cameraName);
+					temp_job_cameraName="0";
+					log.info("执行后：temp_job_cameraName="+temp_job_cameraName);
+				}
 				
 				jobService.doStopCameraRender(jobIds.get(i));
 			}
@@ -274,6 +272,22 @@ public class JobAjaxAction extends ManagerBaseAction{
 
 		if(jobIds!=null){
 			for(int i=0;i<jobIds.size();i++){
+				Job job=jobService.findJobsById(jobIds.get(i));
+
+
+				for(int j=0;i<jobs_render.size();j++) {
+					if (jobs_render.get(j).getCameraName().equals(job.getCameraName())) {
+						log.info("当前的jobs_render[" + j + "]" + "被删除");
+						jobs_render.remove(j);
+					}
+				}
+
+				if (job.getCameraName().equals(temp_job_cameraName)){
+					log.info("正在执行暂停job，执行前：temp_job_cameraName="+temp_job_cameraName);
+					temp_job_cameraName="0";
+					log.info("执行后：temp_job_cameraName="+temp_job_cameraName);
+
+				}
 				jobService.suspendJobByJobId(jobIds.get(i));
 			}
 			
@@ -286,6 +300,7 @@ public class JobAjaxAction extends ManagerBaseAction{
 	public String doJobContinue(){
 
 		if(jobIds!=null){
+
 			jobService.doStartCameraRender(jobIds);
 			
 		}

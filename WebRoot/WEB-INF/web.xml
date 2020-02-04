@@ -240,7 +240,13 @@
     	org.xjtu.framework.backstage.weblistener.UnitNodesFreeListener
    		</listener-class>
 	</listener>
-	
+
+	<listener>
+		<listener-class>
+			org.xjtu.framework.backstage.weblistener.PreRenderwingListener
+		</listener-class>
+
+	</listener>
 	
 	
 	<listener>

@@ -1,20 +1,11 @@
 package com.xj.framework.ssh;
-import java.io.BufferedReader;
+import com.jcraft.jsch.*;
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Properties;
-
-import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.ChannelExec;
-import com.jcraft.jsch.ChannelSftp;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
-import org.apache.commons.logging.LogFactory;
-import org.xjtu.framework.core.util.PbsExecute;
 
 public class Shell {
     //杩滅▼涓绘満鐨刬p鍦板潃
@@ -78,7 +69,7 @@ public class Shell {
 
             //鎺ユ敹杩滅▼鏈嶅姟鍣ㄦ墽琛屽懡浠ょ殑缁撴灉
             log.info(" 测试点9");
-//            stdout=getStream(input);
+            stdout=getStream(input);
             log.info(" 测试点10");
             input.close();  
 

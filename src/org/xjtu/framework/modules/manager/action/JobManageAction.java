@@ -1,28 +1,12 @@
 package org.xjtu.framework.modules.manager.action;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
-import javax.annotation.Resource;
-
+import com.xj.framework.ssh.ShellLocal;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import org.xjtu.framework.backstage.initialize.RndrJobInitialize;
 import org.xjtu.framework.core.base.constant.JobPriority;
 import org.xjtu.framework.core.base.constant.JobStatus;
 import org.xjtu.framework.core.base.constant.ProjectStatus;
@@ -31,21 +15,24 @@ import org.xjtu.framework.core.base.model.Job;
 import org.xjtu.framework.core.base.model.Project;
 import org.xjtu.framework.core.base.model.RenderEngine;
 import org.xjtu.framework.core.base.model.User;
-import org.xjtu.framework.core.util.LinuxInvoker;
-import org.xjtu.framework.core.util.PbsExecute;
-import org.xjtu.framework.core.util.StringUtil;
 import org.xjtu.framework.core.util.UUIDGenerator;
 import org.xjtu.framework.core.util.Xml2Model;
 import org.xjtu.framework.modules.user.service.JobService;
 import org.xjtu.framework.modules.user.service.ProjectService;
 import org.xjtu.framework.modules.user.service.RenderEngineService;
 import org.xjtu.framework.modules.user.service.UserService;
-import org.xjtu.framework.modules.user.service.impl.JobServiceImpl;
 import org.xjtu.framework.modules.user.vo.CameraInfo;
 import org.xjtu.framework.modules.user.vo.JobListInfo;
 import org.xjtu.framework.modules.user.vo.XmlJobInfo;
 
-import com.xj.framework.ssh.ShellLocal;
+import javax.annotation.Resource;
+import java.io.*;
+import java.util.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+import static org.xjtu.framework.backstage.schedule.JobSchedule.jobs_render;
+import static org.xjtu.framework.backstage.schedule.JobSchedule.temp_job_cameraName;
 
 @ParentPackage("struts-default")
 @Namespace("/web/manager")
@@ -187,9 +174,23 @@ public class JobManageAction extends ManagerBaseAction{
 			for(int i=0;i<jobIds.size();i++){
 
 				Job job=jobService.findJobsById(jobIds.get(i));
-					
+
+				for(int j=0;i<jobs_render.size();j++) {
+					if (jobs_render.get(j).getCameraName().equals(job.getCameraName())) {
+						log.info("当前的jobs_render[" + j + "]" + "被删除");
+						jobs_render.remove(j);
+					}
+				}
+
 				if(job!=null){
-					
+
+
+
+					if (job.getCameraName().equals(temp_job_cameraName)){
+						log.info("正在执行删除job,删除前，temp_job_cameraName="+temp_job_cameraName);
+						temp_job_cameraName="0";
+						log.info("删除后，temp_job_cameraName="+temp_job_cameraName);
+					}
 					jobService.doStopCameraRender(jobIds.get(i));
 					jobService.deleteJob(job);
 					Project project=job.getProject();

@@ -52,16 +52,31 @@ public class JobSchedule implements Runnable  {
 
 package org.xjtu.framework.backstage.schedule;
 
-import javax.servlet.ServletContext;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.xjtu.framework.backstage.distribute.JobDistribute;
+import org.xjtu.framework.core.base.constant.JobStatus;
 import org.xjtu.framework.core.base.model.Job;
+import org.xjtu.framework.modules.user.dao.JobDao;
 import org.xjtu.framework.modules.user.service.JobService;
 
+import javax.annotation.Resource;
+import javax.servlet.ServletContext;
+import java.util.ArrayList;
+import java.util.List;
+
 public class JobSchedule implements Runnable  {
-		
+
+//	public static String path_render=null;
+//	public static String frame_range=null;
+//	public static String render_id=null;
+	public static int flag=0;
+
+	public static List<Job> jobs_render=new ArrayList<Job>();
+	private @Resource JobDao jobDao;
+	public  static Job jobtemp;
+	public  static String temp_job_cameraName="0";
 	private static final Logger log = Logger.getLogger(JobSchedule.class);
 	private ServletContext context = null;
 	private static boolean isRunning = false;
@@ -82,7 +97,41 @@ public class JobSchedule implements Runnable  {
 			
 	        while(job!=null){
 	            try {
-					jobDistribute.distributeJob(job);
+//	            	if (job.getCameraName().equals(temp_job_cameraName)){
+					if(false){
+
+						log.info("有重复提交的任务！需要跳过！重复任务的名字："+temp_job_cameraName);
+//						job=null;
+						log.info("job的cameraName="+job.getCameraName());
+						log.info("job的运行状态="+job.getJobStatus());
+						job.setJobStatus(JobStatus.distributed);
+						jobDao.updateJob(job);
+						log.info("经过状态修改后，job的运行状态="+job.getJobStatus());
+					}else{
+
+						log.info("当前job的名字是："+job.getCameraName());
+//						path_render=job.getFilePath();
+//						frame_range=job.getFrameRange();
+//						render_id=job.getId();
+						jobtemp=job;
+						flag=flag+1;
+						log.info("有新的渲染任务被提交，flag的值="+flag);
+
+						boolean flag=jobDistribute.distributeJob(job);
+						if(flag==false){
+							log.info("flag="+flag+",分配任务失败！");
+						}else{
+							log.info("flag="+flag+",分配任务成功！，将要执行预渲染任务！！！");
+							jobs_render.add(job);
+							log.info("执行代码\tjobs_render.add(job);，当前的jobs_render的大小是："+jobs_render.size());
+							temp_job_cameraName=job.getCameraName();
+						}
+
+
+
+					}
+
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

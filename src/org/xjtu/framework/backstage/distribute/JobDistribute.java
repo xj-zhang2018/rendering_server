@@ -1,11 +1,5 @@
 package org.xjtu.framework.backstage.distribute;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Resource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.xjtu.framework.backstage.initialize.MayaJobInitialize;
@@ -19,11 +13,10 @@ import org.xjtu.framework.core.base.model.Task;
 import org.xjtu.framework.core.util.PbsExecute;
 import org.xjtu.framework.core.util.StringUtil;
 import org.xjtu.framework.core.util.UUIDGenerator;
-import org.xjtu.framework.modules.user.service.ClusterManageService;
-import org.xjtu.framework.modules.user.service.ConfigurationService;
-import org.xjtu.framework.modules.user.service.FrameService;
-import org.xjtu.framework.modules.user.service.JobService;
-import org.xjtu.framework.modules.user.service.TaskService;
+import org.xjtu.framework.modules.user.service.*;
+
+import javax.annotation.Resource;
+import java.util.*;
 
 public class JobDistribute {
 	
@@ -44,7 +37,7 @@ public class JobDistribute {
 		String renderEngineName=job.getRenderEngine().getName();
 		System.out.println("renderEngineName is"+renderEngineName);
 	    //different renderEngine
-		if(renderEngineName.equals("RWing")||renderEngineName.equals("rUnit-hustdm")){//绗竴绉嶆覆鏌撳紩鎿�
+		if(renderEngineName.equals("RWing")||renderEngineName.equals("rUnit-hustdm")){
 			int freeNodesNum=clusterManageService.getFreeNodesNum();
 			int unitsNumber = job.getUnitsNumber();	
 			int nodes=unitsNumber;

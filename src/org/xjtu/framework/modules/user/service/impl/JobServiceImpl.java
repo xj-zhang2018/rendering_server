@@ -1,17 +1,6 @@
 package org.xjtu.framework.modules.user.service.impl;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.regex.*;
-
-import javax.annotation.Resource;
+import com.xj.framework.ssh.ShellLocal;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,41 +8,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.xjtu.framework.core.base.constant.FrameStatus;
-import org.xjtu.framework.core.base.constant.JobPriority;
-import org.xjtu.framework.core.base.constant.JobStatus;
-import org.xjtu.framework.core.base.constant.SystemConfig;
-import org.xjtu.framework.core.base.constant.TaskStatus;
-import org.xjtu.framework.core.base.constant.UnitStatus;
-import org.xjtu.framework.core.base.constant.PaymentStatus;
-
-import org.xjtu.framework.core.base.model.Frame;
-import org.xjtu.framework.core.base.model.Job;
-import org.xjtu.framework.core.base.model.Project;
-import org.xjtu.framework.core.base.model.Task;
-import org.xjtu.framework.core.base.model.Unit;
-import org.xjtu.framework.core.base.model.User;
-import org.xjtu.framework.core.util.LinuxInvoker;
+import org.xjtu.framework.core.base.constant.*;
+import org.xjtu.framework.core.base.model.*;
 import org.xjtu.framework.core.util.PbsExecute;
-import org.xjtu.framework.core.util.StringUtil;
 import org.xjtu.framework.core.util.UUIDGenerator;
-import org.xjtu.framework.core.util.XMLUtil;
 import org.xjtu.framework.modules.protocol.TaskDiscription;
 import org.xjtu.framework.modules.socket.Client;
-import org.xjtu.framework.modules.user.dao.ClusterManageCommand;
-import org.xjtu.framework.modules.user.dao.FrameDao;
-import org.xjtu.framework.modules.user.dao.JobDao;
-import org.xjtu.framework.modules.user.dao.ProjectDao;
-import org.xjtu.framework.modules.user.dao.TaskDao;
-import org.xjtu.framework.modules.user.dao.UnitDao;
-import org.xjtu.framework.modules.user.dao.ConfigurationDao;
-import org.xjtu.framework.modules.user.dao.UserDao;
+import org.xjtu.framework.modules.user.dao.*;
 import org.xjtu.framework.modules.user.service.ClusterManageService;
 import org.xjtu.framework.modules.user.service.ConfigurationService;
 import org.xjtu.framework.modules.user.service.JobService;
 import org.xjtu.framework.modules.user.service.UnitService;
 
-import com.xj.framework.ssh.ShellLocal;
+import javax.annotation.Resource;
+import java.text.DecimalFormat;
+import java.util.*;
+import java.util.regex.Pattern;
 
 
 
@@ -792,7 +762,7 @@ public class JobServiceImpl implements JobService {
 			existedJob.setStartTime(new Date());
 			existedJob.setJobStatus(JobStatus.distributed);
 			jobDao.updateJob(existedJob);
-			log.info("distibute is finish=====================>");
+			log.info("分配渲染任务已完成，distibute is finish=====================>");
 			return true;
 		}else{
 			return false;
