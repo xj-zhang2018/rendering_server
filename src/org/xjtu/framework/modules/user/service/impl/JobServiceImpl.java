@@ -48,6 +48,9 @@ public class JobServiceImpl implements JobService {
 	
 	private @Resource SystemConfig systemConfig;
 	
+	//预渲染帧值
+	public static ArrayList<Integer> frameToPreRender = new ArrayList<Integer>();
+	
 	private static final Log log = LogFactory.getLog(JobServiceImpl.class);	
 	private @Resource UnitService unitService;
 	private @Resource ClusterManageService clusterManageService;
@@ -348,7 +351,9 @@ public class JobServiceImpl implements JobService {
 			
 			//Thys 预渲染所有帧
 			String preAllFrame = "";
-			ArrayList<Integer> frameToPreRender = new ArrayList<Integer>();
+			
+			//原来预渲染变量位置
+			//ArrayList<Integer> frameToPreRender = new ArrayList<Integer>();
 			
 			
 			//10.25 Thys 把每帧的数值存进frameToRender[],把每帧的帧名存进mapScenePath
