@@ -64,8 +64,11 @@ public class PreRenderwing  implements Runnable {
     					ShellLocal shellToMaxFrame = new ShellLocal(cmdToMaxFrame);
     					String result = shellToMaxFrame.executeCmd();
     					result = result.trim();
-    					int frameMax = Integer.parseInt(result);
+    					int frameMax = Integer.parseInt(result) + 1;
                         
+    					//获取预渲染图片长宽
+    					int height = jobs_render.get(0).getxResolution();
+    					int width = jobs_render.get(0).getyResolution();
                         
                         //获取帧范围中最后一个也是最大的一个帧的数字。
                         String FrameMax=FrameRange.substring(FrameRange.length()-1);
@@ -86,11 +89,21 @@ public class PreRenderwing  implements Runnable {
                             	
                                 //复制需要预渲染的xml文件            					
                             	for (int j = 0 ; j < frameToPreRender.size() ; j ++) {
-                            		String cmdToCopy = "cp " + filePath + " frame" + frameToPreRender.get(j) + ".xml " + filePath + "/pre/frame" + ++frameMax + ".xml";
+                            		String cmdToCopy = "cp " + filePath + " frame" + frameToPreRender.get(j) + ".xml " + filePath + "/pre/frame" + frameMax + ".xml";
                 					ShellLocal shellToCopy = new ShellLocal(cmdToCopy);
                 					shellToCopy.executeCmd();
+                					
+                					//更改预渲染参数
+                                	ShellLocal ink = new ShellLocal();
+                                	String sampleCountCmd="sed -i 's;<integer name=\"sampleCount\" value=\".*\"/>;<integer name=\"sampleCount\" value=\"100\"/>;g' "+ filePath +"/pre/frame"+ frameMax +".xml";
+                					String heightCmd="sed -i 's;<integer name=\"height\" value=\".*\"/>;<integer name=\"height\" value=\""+ height +"\"/>;g' "+ filePath +"/pre/frame"+ frameMax +"xml";
+                					String widthCmd="sed -i 's;<integer name=\"width\" value=\".*\"/>;<integer name=\"width\" value=\""+ width +"\"/>;g' "+ filePath +"/pre/frame"+ frameMax +".xml";
+                					ink.setCmd(sampleCountCmd+" && "+heightCmd+" && "+widthCmd);
+                                	//更改预渲染参数结束
                             	}                            	
                             	//复制结束
+                            	
+                            	
                             	
                             	//开始预渲染
                             	String renderInstruct="/home/export/online1/systest/swsdu/xijiao/RWing-demo/dist/PreRWing";
