@@ -110,7 +110,7 @@ public class PreRenderwing  implements Runnable {
             		    		String cmdToRender = "cd /home/export/online1/systest/swsdu/xijiao/RWing-demo";
             		    		String shenweiPbsCommand="";
             		    		
-            		    		shenweiPbsCommand="-cross -q " + fuWuListName + " -b -o /home/export/online1/systest/swsdu/xijiao/Outprint/deskroom-2043-Job-" + jobName + ".out -J " + jobName + " -n " + nodes + " -np 1 -sw3runarg \"-a 1\"  -host_stack 2600 -cross_size 20000 " + renderInstruct + " " + filePath + "/pre/";
+            		    		shenweiPbsCommand="-cross -q " + fuWuListName + " -b -o /home/export/online1/systest/swsdu/xijiao/Outprint/deskroom-2043-Job-" + jobName + "_pre.out -J " + jobName + "_pre -n " + nodes + " -np 1 -sw3runarg \"-a 1\"  -host_stack 2600 -cross_size 20000 " + renderInstruct + " " + filePath + "/pre/";
             		    		//bsub            -cross -q q_sw_share            -b -o deskroom82                                                                               -J deskroom-Pre    -n 82           -np 1 -sw3runarg "-a 1"  -host_stack 2600 -cross_size 20000 ./dist/PreRWing  /home/export/online1/systest/swsdu/xijiao/Users/xjtu/deskroom120/	
             		    		PbsExecute  pbs=new PbsExecute(cmdToRender + " && bsub " + shenweiPbsCommand);
 								stdout=pbs.executeCmd().trim();
