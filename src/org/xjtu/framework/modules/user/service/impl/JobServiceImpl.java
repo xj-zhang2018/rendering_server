@@ -484,7 +484,7 @@ public class JobServiceImpl implements JobService {
 					int x=job.getxResolution();
 					int y=job.getyResolution();
 					
-					int preFrameNum = (int) Math.rint(frameNums * SampleRate);
+					int preFrameNum = (int) Math.rint(frameNums * SampleRate / 100);
 		            
 					//Thys 新预渲染
 					//预渲染抽帧参数
