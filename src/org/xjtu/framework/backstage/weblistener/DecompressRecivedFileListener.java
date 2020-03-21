@@ -24,7 +24,7 @@ public class DecompressRecivedFileListener implements ServletContextListener{
 		ScheduledExecutorService service = Executors.newScheduledThreadPool(10);
 		long initialDelay1 = 1;
 		long period1 = 10;
-		service.scheduleAtFixedRate(new DecompreeReciedFileSchedule(event.getServletContext()), initialDelay1, period1, TimeUnit.SECONDS);//安排�?提交的Runnable任务按指定的间隔重复执行
+		//service.scheduleAtFixedRate(new DecompreeReciedFileSchedule(event.getServletContext()), initialDelay1, period1, TimeUnit.SECONDS);//安排�?提交的Runnable任务按指定的间隔重复执行
 
 	/*	
 		long initialDelay2 = 1;
