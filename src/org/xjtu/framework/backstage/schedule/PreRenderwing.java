@@ -74,7 +74,41 @@ public class PreRenderwing  implements Runnable {
 				int width = jobs_render.get(0).getyResolution();
                 
                 //获取帧范围中最后一个也是最大的一个帧的数字。
-                String FrameMax=FrameRange.substring(FrameRange.length()-1);
+                int frameNums = jobs_render.get(0).getFrameNumbers();
+                String frameRange = jobs_render.get(0).getFrameRange();
+
+                log.info("渲染的帧数量=："+frameNums+"渲染的帧范围=："+frameRange);
+                //获取最大帧
+                int[] frameToRender = new int[frameNums];
+                int k=0;
+                if(frameToRender != null && frameToRender.length > 0) {
+
+                    String[] ss = frameRange.split(",");
+                    for(int i = 0;i < ss.length;i++){
+                        String[] temp = ss[i].split("-");
+                        if(temp.length == 1){
+                            Integer tempToInteger = Integer.parseInt(temp[0]);
+                            frameToRender[k] = tempToInteger;
+                            k++;
+                        }else{
+                            Integer end = Integer.parseInt(temp[1]);
+                            Integer begin = Integer.parseInt(temp[0]);
+                            for(int z = begin;z < end + 1;z++){
+                                frameToRender[k] = z;
+                                k++;
+                            }
+                        }
+                    }
+                }
+                //打印渲染的帧数
+                for(int i=0;i<frameToRender.length;i++){
+                    log.info("frameToRender["+i+"]="+frameToRender[i]);
+                }
+
+
+//                String FrameMax=FrameRange.substring(FrameRange.length()-1);
+                int FrameMax=frameToRender[frameNums-1];
+
                 String FrameName="frame"+FrameMax+".xml";
                 log.info("最大的帧的名字是："+FrameName);
 
@@ -89,7 +123,7 @@ public class PreRenderwing  implements Runnable {
                 for(int i = 0;i < filesName.length;i ++){
                     log.info("当前的filesName是=" + filesName[i]);
                     if (filesName[i].equals(FrameName)){
-                    	                            	
+                    	   //预渲染代码段
                     	boolean preFlag = false;
 						try {
 							preFlag = jobDistribute.distributePreRenderJob(filePath,jobName,jobId,SampleRate,height,width);

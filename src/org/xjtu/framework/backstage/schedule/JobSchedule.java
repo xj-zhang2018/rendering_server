@@ -71,7 +71,7 @@ public class JobSchedule implements Runnable  {
 //	public static String path_render=null;
 //	public static String frame_range=null;
 //	public static String render_id=null;
-	public static int flag=0;
+	public static int flagg=0;
 
 	public static List<Job> jobs_render=new ArrayList<Job>();
 	private @Resource JobDao jobDao;
@@ -109,22 +109,32 @@ public class JobSchedule implements Runnable  {
 						log.info("经过状态修改后，job的运行状态="+job.getJobStatus());
 					}else{
 
-						log.info("当前job的名字是："+job.getCameraName());
+
 //						path_render=job.getFilePath();
 //						frame_range=job.getFrameRange();
 //						render_id=job.getId();
-						jobtemp=job;
-						flag=flag+1;
-						log.info("有新的渲染任务被提交，flag的值="+flag);
+
 
 						boolean flag=jobDistribute.distributeJob(job);
+
 						if(flag==false){
 							log.info("flag="+flag+",分配任务失败！");
 						}else{
-							log.info("flag="+flag+",分配任务成功！，将要执行预渲染任务！！！");
-							jobs_render.add(job);
-							log.info("执行代码\tjobs_render.add(job);，当前的jobs_render的大小是："+jobs_render.size());
-							temp_job_cameraName=job.getCameraName();
+
+							log.info("当前渲染作业预渲染标志位为："+job.getPreRenderingTag());
+
+							if(job.getPreRenderingTag()==1) {
+								log.info("当前job的名字是：" + job.getCameraName());
+								jobtemp = job;
+								flagg = flagg + 1;
+								log.info("有新的渲染任务被提交，flag的值=" + flagg);
+
+								log.info("flag=" + flag + ",分配任务成功！，将要执行预渲染任务！！！");
+								jobs_render.add(job);
+								log.info("执行代码\tjobs_render.add(job);，当前的jobs_render的大小是：" + jobs_render.size());
+								temp_job_cameraName = job.getCameraName();
+
+							}
 						}
 
 
